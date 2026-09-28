@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#00001e" />
+    <title>Quantum Pac-Man</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="cabinet">
+      <!-- Left wing: marquee + scoreboard -->
+      <aside class="panel left">
+        <header class="marquee">
+          <h1>QUANTUM<br /> PAC-MAN</h1>
+          <p>THE SHIFTING LABYRINTH</p>
+          <button id="pause-btn" type="button" title="Esc / P">[ <span class="sym">▶</span> Play ]</button>
+        </header>
+
+        <div class="hud">
+          <div class="stat">
+            <span class="label">SCORE</span>
+            <span id="hud-score" class="value">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">HIGH<span class="wide"> SCORE</span></span>
+            <span id="hud-high" class="value">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">LIVES</span>
+            <span id="hud-lives" class="lives">♥♥♥</span>
+          </div>
+          <div class="stat">
+            <span class="label">LEVEL</span>
+            <span id="hud-level" class="value">1</span>
+          </div>
+        </div>
+
+        <div class="collapse" id="gauge">
+          <span class="label">QUANTUM COLLAPSE</span>
+          <span id="hud-collapse" class="value">[  6s ]</span>
+          <span class="gauge-track"><span class="gauge-fill" id="gauge-fill"></span></span>
+        </div>
+      </aside>
+
+      <!-- Center: the screen -->
+      <div class="bezel">
+        <canvas id="game" width="456" height="600"></canvas>
+        <!-- Touch devices: thumb-reachable collapse button over the screen corner. -->
+        <button id="touch-collapse" type="button" aria-label="Force collapse"><span class="sym">⚡</span></button>
+      </div>
+
+      <!-- Right wing: QPU dock + controls -->
+      <aside class="panel right">
+        <div class="dock">
+          <label class="key-field">
+            <span>MOTH API KEY</span>
+            <input id="api-key" type="password" placeholder="blank = classical" autocomplete="off" spellcheck="false" />
+          </label>
+          <label class="key-field">
+            <span>QUANTUM BACKEND</span>
+            <select id="q-mode">
+              <option value="emu">EMU · simulator (seconds)</option>
+              <option value="qpu">QPU · IBM hardware (slow queue)</option>
+            </select>
+          </label>
+          <button id="force-collapse" type="button" title="Spacebar">[ <span class="sym">⚡</span> Force Collapse ]</button>
+          <div class="qpu">
+            <span id="engine-line" class="engine-line">ENGINE: —</span>
+            <span id="topology-badge" class="badge classical">STATUS: FALLBACK (Reason: starting)</span>
+            <span class="job">JOB <span id="hud-job">—</span></span>
+          </div>
+          <p id="status-text" class="status-text"></p>
+        </div>
+
+        <div class="controls">
+          <span class="label">CONTROLS</span>
+          <div class="keys">
+            <div class="keycap-grid">
+              <span></span><kbd>W</kbd><span></span>
+              <kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+            </div>
+            <div class="keycap-grid">
+              <span></span><kbd class="sym">↑</kbd><span></span>
+              <kbd class="sym">←</kbd><kbd class="sym">↓</kbd><kbd class="sym">→</kbd>
+            </div>
+          </div>
+          <p><kbd>Space</kbd> force collapse</p>
+          <p><kbd>Esc</kbd> / <kbd>P</kbd> pause</p>
+          <p><kbd>Enter</kbd> start</p>
+          <ul class="legend">
+            <li><i class="dot"></i> Pellet +10</li>
+            <li><i class="dot big"></i> Power +50</li>
+            <li><i class="ghost-ico"></i> Ghost +200</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/moth-api/:path*",
+      "destination": "https://api.mothquantum.com/:path*"
+    }
+  ]
+}
