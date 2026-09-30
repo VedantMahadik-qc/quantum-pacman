@@ -10,6 +10,12 @@ Classic Pac-Man, except the maze won't hold still. Every **6 seconds** the labyr
 
 No account or API key needed. Without a key the game plays on classical mazes, and adding a Moth key switches it to quantum ones.
 
+### 🎬 Demo
+
+[![Quantum Pac-Man demo: the maze collapses into a new layout and the ghosts re-route instantly](media/quantum-pacman-demo.jpg)](media/quantum-pacman-demo.mp4)
+
+*Click the image to watch the 23-second demo (with sound).*
+
 ---
 
 ## ⚛️ How the quantum maze works
